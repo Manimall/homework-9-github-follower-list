@@ -21,6 +21,16 @@ class UserInfo extends PureComponent {
 			</p>
 		);
 
+		if (Object.keys(data)) return (
+			<div>
+				<p>
+					{ data.message }
+					<br/>
+					Информация о пользователе не найдена
+				</p>
+			</div>
+		);
+
 		return (
 			<div className={styles.root}>
 				<div className={styles.imageWrapper}>

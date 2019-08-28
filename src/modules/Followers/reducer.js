@@ -14,10 +14,6 @@ const data = handleActions({
 	[fetchFollowersFailure]: (_state, action) => action.payload,
 }, null);
 
-const getData = (state) => {
-	console.log(state);
-};
-
 export default combineReducers({
 	data,
 	isLoading,

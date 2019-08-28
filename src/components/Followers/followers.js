@@ -18,7 +18,19 @@ class Followers extends PureComponent {
 		);
 
 		if (data === null) return (
-			<p> Нет информации о подписчиках </p>
+			<p className={`t-no-followers`}>
+				Нет информации о подписчиках
+			</p>
+		);
+
+		if (Object.keys(data)) return (
+			<div>
+				<p>
+					{ data.message }
+					<br/>
+					Информация о пользователе не найдена
+				</p>
+			</div>
 		);
 
 		return (
