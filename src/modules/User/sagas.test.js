@@ -1,11 +1,11 @@
 import { fetchUserFlow } from './sagas';
 import { select, call, put } from 'redux-saga/effects';
 import { getApiKey } from '../Auth';
-import { fetchRequest, fetchSuccess } from './actions';
+import { fetchUserRequest, fetchUserSuccess } from './actions';
 import { getUserInfo } from './api';
 
 describe('fetchUserFlow', () => {
-  const iterator = fetchUserFlow(fetchRequest('test'));
+  const iterator = fetchUserFlow(fetchUserRequest('test'));
 
   it('Первый yield — select(getApiKey)', () => {
     expect(iterator.next().value).toEqual(select(getApiKey));
@@ -19,7 +19,7 @@ describe('fetchUserFlow', () => {
 
   it('Третий yield — put(fetchSuccess(response))', () => {
     expect(iterator.next('test_key').value).toEqual(
-      put(fetchSuccess('test_key'))
+      put(fetchUserSuccess('test_key'))
     );
   });
 });
