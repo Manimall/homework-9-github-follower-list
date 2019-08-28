@@ -30,7 +30,6 @@ class Login extends PureComponent {
   }
 
   render() {
-    console.log(this.props);
     const { isAuthorized } = this.props;
     const { key } = this.state;
 
