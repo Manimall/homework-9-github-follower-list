@@ -10,7 +10,6 @@ class UserInfo extends PureComponent {
 
 		console.log(this.props);
 		const { isLoading, data } = this.props;
-		console.log(data);
 
 		if (isLoading) return (
 			<p> Загрузка информации о пользователе </p>
@@ -22,27 +21,23 @@ class UserInfo extends PureComponent {
 			</p>
 		);
 
-
-		else {
-			const { name, bio, avatar_url, } = data;
-			return (
-				<div className={styles.root}>
-					<div className={styles.imageWrapper}>
-						<img
-							className={styles.image}
-							src={avatar_url}
-							alt={`${ name } Avatar`}
-						/>
-					</div>
-					<div>
-						<p className="t-user-name">{ name }</p>
-						<p className="t-user-bio">
-							{ bio }
-						</p>
-					</div>
+		return (
+			<div className={styles.root}>
+				<div className={styles.imageWrapper}>
+					<img
+						className={styles.image}
+						src={data.avatar_url}
+						alt={`${ data.name } Avatar`}
+					/>
 				</div>
-			);
-		}
+				<div>
+					<p className="t-user-name">{ data.name }</p>
+					<p className="t-user-bio">
+						{ data.bio }
+					</p>
+				</div>
+			</div>
+		);
 	}
 }
 

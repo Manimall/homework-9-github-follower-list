@@ -4,6 +4,15 @@ export const getUserInfo = (apiKey, user) => {
   );
 
   return response
-    .then(response => response.json())
-    .catch(error => Promise.reject(error));
+    .then(response => {
+      if (response.status === 401) {
+        throw new Error("Нет доступа или страница не найдена");
+      }
+
+      return response.json();
+    })
+    .catch(error => {
+      console.log(error);
+      return Promise.reject(error);
+    });
 };

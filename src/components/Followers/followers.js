@@ -21,31 +21,28 @@ class Followers extends PureComponent {
 			<p> Нет информации о подписчиках </p>
 		);
 
-		else {
-			return (
-				<div className={cx(styles.root, 't-followers')}>
-					{/*
-        Отобразите список пользователей.
-        Для каждого пользователя покажите имя и аватарку.
-      */}
+		return (
+			<div className={cx(styles.root, 't-followers')}>
+				{/*
+					Отобразите список пользователей.
+					Для каждого пользователя покажите имя и аватарку.
+				*/}
 
-					{data.map(user => (
-						<div className={cx(styles.follower)}>
-							<img
-								key={user.id}
-								className={cx(styles.followerImg)}
-								src={user.avatar_url}
-								alt={`${user.login} profile photo`}
-							/>
-							<p className={cx(styles.followerLogin)}>
-								{user.login}
-							</p>
-						</div>
-					))}
+				{data.map(user => (
+					<div key={user.id} className={cx(styles.follower)}>
+						<img
+							className={cx(styles.followerImg)}
+							src={user.avatar_url}
+							alt={`${user.login} profile photo`}
+						/>
+						<p className={cx(styles.followerLogin)}>
+							{user.login}
+						</p>
+					</div>
+				))}
 
-				</div>
-			);
-		}
+			</div>
+		);
 	}
 }
 

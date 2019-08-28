@@ -1,9 +1,12 @@
-import { createAction } from 'redux-actions';
+import { createActions } from 'redux-actions';
 
 // Реализуйте недостающие экшены
 
-const fetchUserRequest = createAction('FETCH_USER_REQUEST');
-const fetchUserSuccess = createAction('FETCH_USER_SUCCESS');
-const fetchUserFailure = createAction('FETCH_USER_FAILURE');
 
-export { fetchUserRequest, fetchUserSuccess, fetchUserFailure };
+export const { fetchUserRequest,
+								fetchUserSuccess,
+								fetchUserFailure } = createActions({
+	fetchUserRequest: null,
+	fetchUserSuccess: null,
+	fetchUserFailure: null,
+});

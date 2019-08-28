@@ -12,7 +12,7 @@ export function* fetchUserFlow(action) {
   const apiKey = yield select(getApiKey);
 
   try {
-    const result = yield call(getUserInfo, action.payload, apiKey);
+    const result = yield call(getUserInfo, apiKey, action.payload);
     console.log(result);
     yield put(fetchUserSuccess(result));
   }
