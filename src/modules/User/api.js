@@ -1,6 +1,9 @@
 export const getUserInfo = (apiKey, user) => {
-
-  return fetch(
+  const response = fetch(
     `https://api.github.com/users/${user}?access_token=${apiKey}`
-  ).then(response => response.json());
+  );
+
+  return response
+    .then(response => response.json())
+    .catch(error => Promise.reject(error));
 };

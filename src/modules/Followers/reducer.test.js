@@ -1,5 +1,5 @@
 import reducer from './reducer';
-import { fetchRequest, fetchSuccess, fetchFailure } from './actions';
+import { fetchFollowersRequest, fetchFollowersSuccess, fetchFollowersFailure } from "./actions";
 
 const randomAction = {
   type: `RANDOM_ACTION_${parseInt(Math.random() * 1000, 10)}`
@@ -15,18 +15,18 @@ describe('Reducer Followers', () => {
   });
 
   it('Экшен followers/fetchRequest выставляет флаг isLoading в true', () => {
-    expect(reducer(state0, fetchRequest()).isLoading).toBeTruthy();
+    expect(reducer(state0, fetchFollowersRequest()).isLoading).toBeTruthy();
   });
 
   it('Экшен followersfetchSuccess выставляет флаг isLoading в false', () => {
-    expect(reducer(state0, fetchSuccess('test_data')).isLoading).toBeFalsy();
+    expect(reducer(state0, fetchFollowersSuccess('test_data')).isLoading).toBeFalsy();
   });
 
   it('Экшен followersfetchFailure выставляет флаг isLoading в false', () => {
-    expect(reducer(state0, fetchFailure('test_error')).isLoading).toBeFalsy();
+    expect(reducer(state0, fetchFollowersFailure('test_error')).isLoading).toBeFalsy();
   });
 
   it('Экшен followers/fetchSuccess наполняет своим payload поле data', () => {
-    expect(reducer(state0, fetchSuccess('test_data')).data).toBe('test_data');
+    expect(reducer(state0, fetchFollowersSuccess('test_data')).data).toBe('test_data');
   });
 });

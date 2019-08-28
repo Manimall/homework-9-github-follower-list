@@ -1,5 +1,5 @@
 import reducer from './reducer';
-import { fetchRequest, fetchSuccess, fetchFailure } from './actions';
+import { fetchUserRequest, fetchUserFailure, fetchUserSuccess } from './actions';
 
 const randomAction = {
   type: `RANDOM_ACTION_${parseInt(Math.random() * 1000, 10)}`
@@ -15,18 +15,18 @@ describe('Reducer User', () => {
   });
 
   it('Экшен user/fetchRequest выставляет флаг isLoading в true', () => {
-    expect(reducer(state0, fetchRequest()).isLoading).toBeTruthy();
+    expect(reducer(state0, fetchUserRequest()).isLoading).toBeTruthy();
   });
 
   it('Экшен user/fetchSuccess выставляет флаг isLoading в false', () => {
-    expect(reducer(state0, fetchSuccess('test_data')).isLoading).toBeFalsy();
+    expect(reducer(state0, fetchUserSuccess('test_data')).isLoading).toBeFalsy();
   });
 
   it('Экшен user/fetchFailure выставляет флаг isLoading в false', () => {
-    expect(reducer(state0, fetchFailure('test_error')).isLoading).toBeFalsy();
+    expect(reducer(state0, fetchUserFailure('test_error')).isLoading).toBeFalsy();
   });
 
   it('Экшен user/fetchSuccess наполняет своим payload поле data', () => {
-    expect(reducer(state0, fetchSuccess('test_data')).data).toBe('test_data');
+    expect(reducer(state0, fetchUserSuccess('test_data')).data).toBe('test_data');
   });
 });
