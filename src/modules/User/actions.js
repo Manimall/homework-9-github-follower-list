@@ -6,7 +6,7 @@ import { createActions } from 'redux-actions';
 export const { fetchUserRequest,
 								fetchUserSuccess,
 								fetchUserFailure } = createActions({
-	fetchUserRequest: null,
-	fetchUserSuccess: null,
-	fetchUserFailure: null,
+	fetchUserRequest,
+	fetchUserSuccess,
+	fetchUserFailure,
 });

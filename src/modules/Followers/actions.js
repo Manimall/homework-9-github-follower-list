@@ -7,7 +7,7 @@ import { createActions } from 'redux-actions';
 export const { fetchFollowersRequest,
 							 fetchFollowersSuccess,
 							 fetchFollowersFailure } = createActions({
-		fetchFollowersRequest: null,
-		fetchFollowersSuccess: null,
-		fetchFollowersFailure: null,
+		fetchFollowersRequest,
+		fetchFollowersSuccess,
+		fetchFollowersFailure,
 });
