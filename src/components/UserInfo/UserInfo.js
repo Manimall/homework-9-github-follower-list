@@ -8,7 +8,7 @@ class UserInfo extends PureComponent {
 		// Покажите статус загрузки
 		// Если данные не были загружены - сообщите об этом пользователю
 
-		console.log(this.props);
+
 		const { isLoading, data } = this.props;
 
 		if (isLoading) return (
@@ -21,7 +21,10 @@ class UserInfo extends PureComponent {
 			</p>
 		);
 
-		if (Object.keys(data)) return (
+		const hasError = Object.keys(data).includes(`message`);
+		console.log(hasError);
+
+		if (hasError) return (
 			<div>
 				<p>
 					{ data.message }

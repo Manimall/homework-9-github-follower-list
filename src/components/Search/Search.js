@@ -23,9 +23,6 @@ class Search extends PureComponent {
     const { user } = this.state;
 
     if (event.key === 'Enter' && user.length > 0) {
-      console.log(event);
-      console.log(this.props);
-
       fetchUserRequest(user);
       fetchFollowersRequest(user);
     }

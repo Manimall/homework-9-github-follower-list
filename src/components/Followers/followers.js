@@ -9,8 +9,6 @@ class Followers extends PureComponent {
 		// Покажите статус загрузки
 		// Если данные не были загружены - сообщите об этом пользователю
 
-		console.log(this.props);
-
 		const { isLoading, data } = this.props;
 
 		if (isLoading) return (
@@ -23,7 +21,10 @@ class Followers extends PureComponent {
 			</p>
 		);
 
-		if (Object.keys(data)) return (
+		const hasError = Object.keys(data).includes(`message`);
+		console.log(hasError);
+
+		if (hasError) return (
 			<div>
 				<p>
 					{ data.message }
@@ -36,9 +37,9 @@ class Followers extends PureComponent {
 		return (
 			<div className={cx(styles.root, 't-followers')}>
 				{/*
-					Отобразите список пользователей.
-					Для каждого пользователя покажите имя и аватарку.
-				*/}
+				Отобразите список пользователей.
+				Для каждого пользователя покажите имя и аватарку.
+			*/}
 
 				{data.map(user => (
 					<div key={user.id} className={cx(styles.follower)}>
