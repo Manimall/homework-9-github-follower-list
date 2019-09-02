@@ -16,11 +16,11 @@ export function* fetchFollowersFlow(action) {
 
   try {
     const result = yield call(getFollowersInfo, apiKey, action.payload);
-    console.log(result);
+    // console.log(result);
     yield put(fetchFollowersSuccess(result));
   }
   catch(error) {
-    console.log(error);
+    // console.log(error);
     yield put(fetchFollowersSuccess(error));
   }
 }

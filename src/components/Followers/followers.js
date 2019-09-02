@@ -21,14 +21,14 @@ class Followers extends PureComponent {
 			</p>
 		);
 
-		const hasError = Object.keys(data).includes(`message`);
-		console.log(hasError);
+		// const hasError = Object.keys(data).some(el => el === `message`);
+		// const hasError = Object.keys(data).includes(`message`);
+		const hasError = data.hasOwnProperty(`message`);
+		// console.log(hasError);
 
 		if (hasError) return (
 			<div>
 				<p>
-					{ data.message }
-					<br/>
 					Информация о пользователе не найдена
 				</p>
 			</div>
