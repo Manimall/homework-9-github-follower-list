@@ -1,19 +1,64 @@
 import React, { PureComponent } from 'react';
 import styles from './UserInfo.module.css';
-
 import { connect } from 'react-redux';
+import { getUserData, getIsLoading } from "../../modules/User";
 
 class UserInfo extends PureComponent {
-  render() {
-    // Покажите статус загрузки
-    // Если данные не были загружены - сообщите об этом пользователю
-    return (
-      <div className={styles.root}>
-        {/* Отобразите данные о пользователе */}
-      </div>
-    );
-  }
+	render() {
+		// Покажите статус загрузки
+		// Если данные не были загружены - сообщите об этом пользователю
+
+
+		const { isLoading, data } = this.props;
+
+		if (isLoading) return (
+			<p> Загрузка информации о пользователе </p>
+		);
+
+		if (data === null) return (
+			<p className="t-no-user-info">
+				Нет информации о пользователе
+			</p>
+		);
+
+		// const hasError = Object.keys(data).includes(`message`);
+		const hasError = data.hasOwnProperty(`message`);
+		// console.log(hasError);
+
+		if (hasError) return (
+			<div>
+				<p>
+					Информация о пользователе не найдена
+				</p>
+			</div>
+		);
+
+		return (
+			<div className={styles.root}>
+				<div className={styles.imageWrapper}>
+					<img
+						className={styles.image}
+						src={data.avatar_url}
+						alt={`${ data.name } Avatar`}
+					/>
+				</div>
+				<div>
+					<p className="t-user-name">{ data.name }</p>
+					<p className="t-user-bio">
+						{ data.bio }
+					</p>
+				</div>
+			</div>
+		);
+	}
 }
 
+const mapStateToProps = (state) => ({
+	data: getUserData(state),
+	isLoading: getIsLoading(state),
+});
+
 // Используйте поля data, isLoading из стейта
-export default connect(state => ({}))(UserInfo);
+export default connect(
+	mapStateToProps
+)(UserInfo);
